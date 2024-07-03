@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tech Goals</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <main>
+            <h1 id="name">Hello, I am Nmesoma Elisha.</h1>
+            <section id="profile">
+                <div>
+                    <img src="images/slackprofiles.jpg" alt="Slack Profile Picture" data-testid="slackprofile.jpg">
+                </div>
+                <div id="details">
+                    <p data-testid="Nmeso">Nmeso</p>
+                    <a href="mailto:chimazaekpere@gmail.com?subject=Email Subject"
+                        data-testid="chimazaekpere@gmail.com">chimazaekpere@gmail.com
+                    </a>
+                    <p data-testid="currentDay" id="currentDay"></p>
+                    <p ata-testid="currentTimeUTC" id="UTC-time"></p>
+                </div>
+            </section>
+
+            <section id="goals">
+                <p>A Software developer with a passion for design and solving problems using frontend technology. I like
+                    to
+                    describe myself as an explorer, eager to learn something new. I build interactive web experiences
+                    using
+                    modern web technology.</p>
+                <p>In the next two years, I want to:</p>
+                <ul>
+                    <li>Become proficient in advanced JavaScript frameworks like React and Next.js.</li>
+                    <li>Master the use of API calls to build more dynamic and interactive applications.</li>
+                    <li>Enhance my skills in UI/UX design.</li>
+                    <li>Contribute to open-source projects and build a strong portfolio.</li>
+                    <li>Stay updated with the latest trends and technologies in the development industry.</li>
+                </ul>
+                <p>Being part of the <span id="hng"><a href="https://hng.tech/learn" data-testid="hngLink">HNG 11
+                            intern</a></span> program, I believe it will help me hone my skillset in React, achieve my
+                    goals
+                    and meet prospective Recuriters.
+                </p>
+
+                <div id="links">
+                    <h3> Know more about HNG </h3>
+                    <ul>
+                        <li><a href="https://hng.tech/learn" data-testid="hngLink">HNG Learn</a></li>
+                        <li><a href="https://keyword.dog" data-testid="keywordLink">Keyword Dog</a></li>
+                        <li><a href="https://scrapeanyweb.site" data-testid="scrapeanywebLink">Scrape Any Web</a></li>
+                    </ul>
+                </div>
+            </section>
+    </main>
+</body>
+
+<script>
+    const currentDate = document.getElementById('currentDay');
+    const time = document.getElementById('UTC-time');
+
+    setInterval(() => {
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+
+        const now = new Date(); //get the full date
+        const currentDay = now.toLocaleString('NG', { weekday: 'long' }); // get the current day
+        const date = now.getDate(); // get the current day
+        const month = months[now.getMonth()]; // gets the current month
+        const year = now.getFullYear(); //get the current year
+
+        // Get the time in UTC
+        const minutes = now.getUTCMinutes().toString().padStart(2, '0');
+        const hours = now.getUTCHours().toString().padStart(2, '0');
+
+        let period = 'AM';
+
+        if (hours >= 12) {
+            period = 'PM';
+            if (hours > 12) {
+                hours -= 12;
+            }
+        } else if (hours === 0) {
+            hours = 12;
+        };
+
+        currentDate.innerHTML = `${currentDay} ${date} ${month}, ${year}`;
+        time.innerHTML = `${hours}:${minutes} ${period}`;
+    }, 1000); // Update every minute
+</script>
+
+</html>
